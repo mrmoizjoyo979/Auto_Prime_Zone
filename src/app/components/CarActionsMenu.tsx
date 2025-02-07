@@ -142,7 +142,7 @@ const handlePaymentSuccess = (paymentMethod: PaymentMethod) => {
     <div className="flex items-center gap-2">
       <button
         onClick={() => setIsBookingOpen(true)}
-        className="w-full py-3 font-bold font-sans bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300 ease-in-out"
+        className="w-full py-3 text-center font-bold font-sans bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300 ease-in-out"
       >
         For Booking
       </button>
@@ -152,7 +152,7 @@ const handlePaymentSuccess = (paymentMethod: PaymentMethod) => {
           <div className="bg-white p-6 rounded-lg max-w-md w-full relative">
             <button
               onClick={handleCancel}
-              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+              className="absolute top-2 right-2 text-blue-500 hover:text-blue-700"
               aria-label="Close"
             >
               <svg
@@ -170,10 +170,10 @@ const handlePaymentSuccess = (paymentMethod: PaymentMethod) => {
                 />
               </svg>
             </button>
-            <h2 className="text-xl font-bold mb-4">Book This Car</h2>
+            <h2 className="text-2xl text-blue-500 underline font-sans text-center font-bold mb-4">Book This Car!</h2>
             {!showPayment ? (
               <>
-                <p className="mb-4">
+                <p className="mb-4 font-sans text-sm font-bold">
                   Enter your booking details below. We&apos;ll get back to you with
                   confirmation shortly.
                 </p>

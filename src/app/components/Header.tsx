@@ -28,7 +28,7 @@ export default function Header() {
             </li>
             <li>
               <a
-                href="/components/AboutUs"
+                href="AboutUs"
                 className="hover:text-[#007bff] px-3 py-2 text-[#333] font-semibold block text-[15px] hover:underline"
               >
                 About
@@ -36,7 +36,7 @@ export default function Header() {
             </li>
             <li>
               <a
-                href="/components/ContactUs"
+                href="ContactUs"
                 className="py-2 hover:text-[#007bff] px-3 text-[#333] font-semibold block text-[15px] hover:underline"
               >
                 Contact

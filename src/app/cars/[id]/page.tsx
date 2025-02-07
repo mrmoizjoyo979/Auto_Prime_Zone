@@ -62,7 +62,7 @@ const CarDetailPage = async ({ params }: { params: { id: string } }) => {
 
     
           <div className="mt-6">
-            <Link href="/ContactButton">
+            <Link  href={`/cars/${params.id}/contact`}>
               <button className="w-full py-3 font-bold font-sans bg-blue-500 text-white rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300 ease-in-out">
                 Contact Seller
               </button>
