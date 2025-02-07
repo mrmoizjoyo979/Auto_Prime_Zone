@@ -25,8 +25,8 @@ const CarDetailPage = async ({ params }: { params: { id: string } }) => {
 
   if (!car) {
     notFound();
+    return null;
   }
-
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex flex-col md:flex-row gap-6 items-start">
