@@ -1,4 +1,4 @@
-export default {
+const carSchema = {
   name: 'car',
   title: 'Car',
   type: 'document',
@@ -40,14 +40,16 @@ export default {
       },
     },
     {
-      name: 'description', 
+      name: 'description',
       title: 'Description',
-      type: 'text',  
+      type: 'text',
     },
     {
-      name: 'shortdescription', 
-      title: 'ShortDescription',
+      name: 'shortdescription',
+      title: 'Short Description',
       type: 'text',
     },
   ],
 };
+
+export default carSchema;

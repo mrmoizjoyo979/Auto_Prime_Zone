@@ -19,41 +19,23 @@ const HomePage = () => {
 
   useEffect(() => {
     const fetchCars = async () => {
-      const data: Car[] = await client.fetch(GET_ALL_CARS);
-      setCars(data);
+      try {
+        const data: Car[] = await client.fetch(GET_ALL_CARS);
+        setCars(data);
+      } catch (error) {
+        console.error("Error fetching cars:", error);
+      }
     };
     fetchCars();
   }, []);
 
-  const handleSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const query = e.target.value.trim();
-    setSearchQuery(query);
-
-    if (query === "") {
-      const data: Car[] = await client.fetch(GET_ALL_CARS);
-      setCars(data);
-    } else {
-      const searchQuery = `
-        *[_type == "car" && (make match "${query}" || model match "${query}")] {
-          _id,
-          make,
-          model,
-          year,
-          price,
-          image {
-            asset -> {
-              _id,
-              url
-            }
-          },
-          stockStatus,
-          description
-        }
-      `;
-      const data: Car[] = await client.fetch(searchQuery);
-      setCars(data);
-    }
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value.trim());
   };
+
+  const filteredCars = cars.filter((car) =>
+    `${car.make} ${car.model}`.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div className="container mx-auto px-4 py-6">
@@ -64,7 +46,7 @@ const HomePage = () => {
         <p className="text-lg text-black font-sans mb-8">
           Search from a wide variety of cars based on make and model.
         </p>
-        
+
         <div className="relative max-w-md mx-auto">
           <input
             type="text"
@@ -73,7 +55,7 @@ const HomePage = () => {
             placeholder="Search by make or model"
             className="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-      
+
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400"
@@ -91,11 +73,8 @@ const HomePage = () => {
         </div>
       </div>
 
-  
       <div className="mt-10">
-        <CarListing cars={cars} fetchMoreCars={function (): void {
-          throw new Error("Function not implemented.");
-        } } hasMore={false} />
+        <CarListing cars={filteredCars} />
       </div>
     </div>
   );
